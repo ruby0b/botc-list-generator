@@ -15,6 +15,7 @@ pub enum Msg {
     ToggleLock(String),
     SetLockForAll(bool),
     Randomize,
+    ClearAll,
     SetPlayerCount(u8),
     SetTypeCountsLocked(bool),
     SetOutsiderCount(u8),
@@ -103,6 +104,10 @@ impl Component for App {
             }
             Msg::SetScript(script) => {
                 self.state.script = script;
+                self.state.selected.clear();
+                true
+            }
+            Msg::ClearAll => {
                 self.state.selected.clear();
                 true
             }
@@ -210,6 +215,9 @@ impl Component for App {
                         <div class="row">
                             <button onclick={ctx.link().callback(|_| Msg::SetLockForAll(true))}>{"Lock All"}</button>
                             <button onclick={ctx.link().callback(|_| Msg::SetLockForAll(false))}>{"Unlock All"}</button>
+                        </div>
+                        <div class="row">
+                            <button onclick={ctx.link().callback(|_| Msg::ClearAll)}>{"Clear All"}</button>
                         </div>
                     </div>
                     {self.view_character_list(ctx.link())}
