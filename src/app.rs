@@ -215,8 +215,6 @@ impl Component for App {
                         <div class="row">
                             <button onclick={ctx.link().callback(|_| Msg::SetLockForAll(true))}>{"Lock All"}</button>
                             <button onclick={ctx.link().callback(|_| Msg::SetLockForAll(false))}>{"Unlock All"}</button>
-                        </div>
-                        <div class="row">
                             <button onclick={ctx.link().callback(|_| Msg::ClearAll)}>{"Clear All"}</button>
                         </div>
                     </div>
@@ -252,7 +250,7 @@ impl App {
             .contains_key(&char.id())
             .then_some("selected");
         html! {
-            <li>
+            <li class="clickable">
                 <div class={classes!(selected)} onclick={onclick}>
                     <img src={char.icon.clone()} width="32.5" height="32.5"/>
                     {&char.name}
@@ -276,10 +274,6 @@ impl App {
             let id = char.id();
             link.callback(move |_| Msg::ToggleLock(id.clone()))
         };
-        let remove_char = {
-            let id = char.id();
-            link.callback(move |_| Msg::Toggle(id.clone()))
-        };
         let locked = self
             .state
             .selected
@@ -287,11 +281,10 @@ impl App {
             .copied()
             .unwrap_or(false);
         html! {
-            <li class={classes!(if locked {"locked"} else {"unlocked"})} onclick={toggle_lock}>
+            <li class={classes!("clickable", if locked {"locked"} else {"unlocked"})} onclick={toggle_lock}>
                 <h4>
                     <img src={char.icon.clone()} width="50" height="50"/>
                     {&char.name}
-                    <button class="remove" onclick={remove_char}>{"Remove"}</button>
                 </h4>
                 {&char.description}<br/>
             </li>
