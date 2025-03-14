@@ -303,7 +303,12 @@ impl App {
         let mut options = Vec::new();
         for script in &self.state.data.scripts {
             options.push(html! {
-                <option value={script.name.clone()}>{&script.name}</option>
+                <option
+                    selected={script.name == self.state.script}
+                    value={script.name.clone()}
+                >
+                    {&script.name}
+                </option>
             });
         }
         let set_script =
