@@ -263,12 +263,12 @@ impl App {
 
     fn view_selected_characters(&self, link: &Scope<Self>) -> Html {
         let by_type = group_characters_by_type(&self.state.selected_characters());
-        let mut li = Vec::new();
+        let mut lists = Vec::new();
         for (r#type, cs) in by_type {
-            li.push(self.view_type(&r#type));
-            li.extend(cs.iter().map(|c| self.view_selected_character(link, c)));
+            let li = cs.iter().map(|c| self.view_selected_character(link, c));
+            lists.push(html! { <> {self.view_type(&r#type)} <ul> { for li } </ul> </> });
         }
-        html! { <ul> { for li } </ul> }
+        html! { { for lists } }
     }
 
     fn view_selected_character(&self, link: &Scope<Self>, char: &Character) -> Html {
