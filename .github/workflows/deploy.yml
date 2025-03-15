@@ -1,9 +1,5 @@
 name: Deploy
-on:
-  workflow_run:
-    branches: [main]
-    workflows: [Check]
-    types: [completed]
+on: [push, pull_request]
 
 jobs:
   release:
@@ -18,7 +14,7 @@ jobs:
 
     - uses: actions-rs/toolchain@v1
       with:
-        toolchain: stable
+        toolchain: nightly
         target: wasm32-unknown-unknown
     - uses: jetli/trunk-action@v0.5.0
     - uses: jetli/wasm-bindgen-action@v0.2.0
