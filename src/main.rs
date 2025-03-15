@@ -1,3 +1,5 @@
+#![feature(btree_extract_if)]
+
 mod app;
 mod consts;
 mod logic {

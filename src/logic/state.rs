@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 use rand::prelude::IndexedRandom as _;
 use serde::{Deserialize, Serialize};
@@ -76,64 +76,83 @@ impl State {
     }
 
     pub fn randomize_unlocked(&mut self) {
-        self.selected.retain(|_, locked| *locked);
+        let old_unlocked = self
+            .selected
+            .extract_if(|_, locked| !*locked)
+            .map(|(id, _)| id)
+            .collect();
 
+        match self.get_randomized_characters(old_unlocked) {
+            Some((i, new_selected)) => {
+                tracing::info!("Valid permutation found after {i} iterations");
+                self.selected
+                    .extend(new_selected.into_iter().map(|id| (id, Default::default())));
+            }
+            None => {
+                let err = format!(
+                    "Failed to randomize after {} iterations",
+                    crate::consts::MAX_GENERATION_ITERATIONS
+                );
+                tracing::error!(err);
+                gloo_dialogs::alert(&err);
+            }
+        }
+    }
+
+    fn get_randomized_characters(
+        &self,
+        old_unlocked: BTreeSet<String>,
+    ) -> Option<(usize, BTreeSet<String>)> {
         let missing = self.player_count as usize - self.selected.len();
 
-        let locked = {
-            let characters = self.characters();
-            self.selected
-                .iter()
-                .filter_map(|(id, _)| characters.iter().find(|c| &c.id() == id).cloned())
-                .cloned()
-                .collect::<Vec<_>>()
-        };
-        let characters: Vec<Character> = {
-            let characters = self.characters();
-            characters
-                .into_iter()
-                .filter(|c| !self.selected.contains_key(&c.id()))
-                .cloned()
-                .collect()
-        };
+        let locked: Vec<&Character> = self
+            .selected
+            .iter()
+            .filter_map(|(id, _)| self.characters().into_iter().find(|c| &c.id() == id))
+            .collect();
+
+        let all_characters: Vec<&Character> = self
+            .characters()
+            .into_iter()
+            .filter(|c| !self.selected.contains_key(&c.id()))
+            .collect();
 
         for i in 0..crate::consts::MAX_GENERATION_ITERATIONS {
-            let mut new_characters = locked.clone();
-            new_characters.extend(
-                characters
-                    .choose_multiple(&mut rand::rng(), missing)
-                    .cloned(),
-            );
+            let new_unlocked: Vec<&Character> = all_characters
+                .choose_multiple(&mut rand::rng(), missing)
+                .copied()
+                .collect();
 
-            let mut type_counts = HashMap::new();
-            type_counts.insert(Type::Outsider, vec![self.outsider_count as i8]);
-            type_counts.insert(Type::Minion, vec![self.minion_count as i8]);
-            type_counts.insert(Type::Demon, vec![self.demon_count as i8]);
+            let new_character_list = {
+                let mut it = locked.clone();
+                it.extend(new_unlocked.iter());
+                it
+            };
 
-            if validate_character_list(&new_characters, type_counts) {
-                let old_selected = std::mem::take(&mut self.selected);
-                self.selected
-                    .extend(new_characters.into_iter().map(|r| r.id()).map(|id| {
-                        let value = old_selected.get(&id).copied().unwrap_or_default();
-                        (id, value)
-                    }));
+            let type_counts = {
+                let mut it = HashMap::new();
+                it.insert(Type::Outsider, vec![self.outsider_count as i8]);
+                it.insert(Type::Minion, vec![self.minion_count as i8]);
+                it.insert(Type::Demon, vec![self.demon_count as i8]);
+                it
+            };
 
-                tracing::info!("Randomized successfully after {} iterations", i + 1);
-                return;
+            if validate_character_list(&new_character_list, type_counts) {
+                let new_unlocked: BTreeSet<String> =
+                    new_unlocked.into_iter().map(Character::id).collect();
+                if old_unlocked == new_unlocked {
+                    continue;
+                }
+                return Some((i + 1, new_unlocked));
             }
         }
 
-        let err = format!(
-            "Failed to randomize after {} iterations",
-            crate::consts::MAX_GENERATION_ITERATIONS
-        );
-        tracing::error!(err);
-        gloo_dialogs::alert(&err);
+        None
     }
 }
 
 pub fn validate_character_list(
-    characters: &[Character],
+    characters: &[&Character],
     mut type_counts: HashMap<Type, Vec<i8>>,
 ) -> bool {
     let conditions: Vec<_> = characters
