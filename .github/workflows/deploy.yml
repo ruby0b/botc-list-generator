@@ -2,7 +2,7 @@ name: Deploy
 on: [push, pull_request]
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -12,11 +12,17 @@ jobs:
     - uses: Swatinem/rust-cache@v2
     - uses: jetli/trunk-action@v0.5.0
     - uses: jetli/wasm-bindgen-action@v0.2.0
-
     - run: trunk build --release --public-url /${{ github.event.repository.name }}
-
-    - uses: peaceiris/actions-gh-pages@v4
-      if: github.ref == 'refs/heads/main'
+    - uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - id: deployment
+      uses: actions/deploy-pages@v4
