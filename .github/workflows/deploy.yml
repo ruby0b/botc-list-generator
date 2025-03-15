@@ -6,22 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/cache@v4
-      with:
-        path: |
-          target/
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly
-        target: wasm32-unknown-unknown
+    - run: rustup toolchain install nightly --profile minimal
+    - run: rustup target add wasm32-unknown-unknown --toolchain nightly
+
+    - uses: Swatinem/rust-cache@v2
+  
     - uses: jetli/trunk-action@v0.5.0
     - uses: jetli/wasm-bindgen-action@v0.2.0
 
     - run: trunk build --release --public-url /${{ github.event.repository.name }}
 
-    - uses: peaceiris/actions-gh-pages@v3
+    - uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
