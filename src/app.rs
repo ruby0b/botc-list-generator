@@ -192,7 +192,9 @@ impl Component for App {
                     {self.view_character_list(ctx.link())}
                 </div>
                 <div class="content">
-                    {self.view_selected_characters(ctx.link())}
+                    <div class="box">
+                        {self.view_selected_characters(ctx.link())}
+                    </div>
                 </div>
             </main>
         }
@@ -253,11 +255,11 @@ impl App {
             .unwrap_or(false);
         html! {
             <li class={classes!("clickable", if locked {"locked"} else {"unlocked"})} onclick={toggle_lock}>
-                <h4>
-                    <img src={char.icon.clone()} width="50" height="50"/>
-                    {&char.name}
-                </h4>
-                {&char.description}<br/>
+                <img src={char.icon.clone()}/>
+                <div>
+                    <h4>{&char.name}</h4>
+                    <p>{&char.description}</p>
+                </div>
             </li>
         }
     }

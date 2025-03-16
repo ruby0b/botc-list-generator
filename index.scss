@@ -7,6 +7,7 @@
   --lock-colour-light: rgba(158, 158, 158, 0.5);
   --lock-colour-dark: rgba(91, 91, 91, 0.5);
   --ui-background: #444444;
+  --ui-selected: #457173;
 }
 
 html,
@@ -41,22 +42,15 @@ h4 {
   margin: 0;
 }
 
-.row {
-  margin: 2px;
+p {
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 ul {
   list-style-type: none;
   text-align: left;
-}
-
-li {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-li>.selected {
-  background-color: cadetblue;
 }
 
 .clickable {
@@ -87,6 +81,13 @@ li>.selected {
   background-color: var(--ui-background);
 }
 
+.sidebar .box .row {
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .sidebar ul {
   width: 100%;
   padding: 0;
@@ -99,8 +100,23 @@ li>.selected {
   background-color: var(--ui-background);
 }
 
+.sidebar li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.sidebar li>.selected {
+  background-color: var(--ui-selected);
+}
+
 .content {
   margin-left: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.content .box {
+  max-width: 1000px;
   padding: 10px;
 }
 
@@ -110,7 +126,13 @@ li>.selected {
 }
 
 .content li {
-  border: 2px solid lightgray;
+  margin: 2px;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .content li.locked {
@@ -119,4 +141,10 @@ li>.selected {
       var(--lock-colour-light) 10px,
       var(--lock-colour-dark) 10px,
       var(--lock-colour-dark) 20px);
+}
+
+.content li>img {
+  align-self: center;
+  width: 100px;
+  height: 100px;
 }
