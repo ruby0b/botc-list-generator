@@ -6,6 +6,7 @@
   --botc-colour-purple: #411F5C;
   --lock-colour-light: rgba(158, 158, 158, 0.5);
   --lock-colour-dark: rgba(91, 91, 91, 0.5);
+  --ui-background: #444444;
 }
 
 html,
@@ -73,7 +74,7 @@ li>.selected {
   flex-direction: column;
   gap: 7px;
 
-  background-color: #444444;
+  background-color: var(--ui-background);
 }
 
 .sidebar .box {
@@ -83,7 +84,7 @@ li>.selected {
   flex-direction: column;
   align-items: start;
 
-  background-color: #444444;
+  background-color: var(--ui-background);
 }
 
 .sidebar ul {
@@ -95,12 +96,11 @@ li>.selected {
 
   flex-grow: 1;
 
-  background-color: #444444;
+  background-color: var(--ui-background);
 }
 
 .content {
   margin-left: 300px;
-  top: 0;
   padding: 10px;
 }
 

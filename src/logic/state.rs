@@ -75,6 +75,19 @@ impl State {
         self.data.scripts.iter().find(|&r| r.name == self.script)
     }
 
+    pub fn is_valid_character_list(&self) -> bool {
+        let type_counts = {
+            let mut it = HashMap::new();
+            it.insert(Type::Outsider, vec![self.outsider_count as i8]);
+            it.insert(Type::Minion, vec![self.minion_count as i8]);
+            it.insert(Type::Demon, vec![self.demon_count as i8]);
+            it
+        };
+
+        self.selected.len() == self.player_count as usize
+            && validate_character_list(&self.selected_characters(), type_counts)
+    }
+
     pub fn randomize_unlocked(&mut self) {
         let old_unlocked = self
             .selected

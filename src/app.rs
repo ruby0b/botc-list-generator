@@ -210,6 +210,11 @@ impl Component for App {
                     </div>
                     <div class="box">
                         <div class="row">
+                            {"Valid List: "}{if self.state.is_valid_character_list() {"✅"} else {"❌"}}
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="row">
                             <button onclick={ctx.link().callback(|_| Msg::Randomize)}>{"Randomize Unlocked"}</button>
                         </div>
                         <div class="row">
