@@ -115,42 +115,8 @@ impl Component for App {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let set_player_count = ctx.link().callback(|e: Event| {
-            let count = get_text(e.target().unwrap()).parse::<u8>().unwrap_or(10);
-            if count < 5 {
-                Msg::SetPlayerCount(5)
-            } else if count > 15 {
-                Msg::SetPlayerCount(15)
-            } else {
-                Msg::SetPlayerCount(count)
-            }
-        });
         let set_type_counts_locked = ctx.link().callback(|e: Event| {
             Msg::SetTypeCountsLocked(e.target_unchecked_into::<HtmlInputElement>().checked())
-        });
-        let set_outsider_count = ctx.link().callback(|e: Event| {
-            let count = get_text(e.target().unwrap()).parse::<u8>().unwrap_or(1);
-            if count > 15 {
-                Msg::SetOutsiderCount(15)
-            } else {
-                Msg::SetOutsiderCount(count)
-            }
-        });
-        let set_minion_count = ctx.link().callback(|e: Event| {
-            let count = get_text(e.target().unwrap()).parse::<u8>().unwrap_or(1);
-            if count > 15 {
-                Msg::SetMinionCount(15)
-            } else {
-                Msg::SetMinionCount(count)
-            }
-        });
-        let set_demon_count = ctx.link().callback(|e: Event| {
-            let count = get_text(e.target().unwrap()).parse::<u8>().unwrap_or(1);
-            if count > 15 {
-                Msg::SetDemonCount(15)
-            } else {
-                Msg::SetDemonCount(count)
-            }
         });
 
         html! {
@@ -166,7 +132,7 @@ impl Component for App {
                             <label>{"Player Count: "}</label>
                             <input type="number" min="1" max="50"
                                 value={self.state.player_count.to_string()}
-                                onchange={set_player_count}
+                                onchange={clamped(ctx, 5, 15, Msg::SetPlayerCount)}
                             />
                         </div>
                         <div class="row">
@@ -188,7 +154,7 @@ impl Component for App {
                             <input type="number" min="0" max="50"
                                 disabled={self.state.type_counts_locked}
                                 value={self.state.outsider_count.to_string()}
-                                onchange={set_outsider_count}
+                                onchange={clamped(ctx, 0, 15, Msg::SetOutsiderCount)}
                             />
                         </div>
                         <div class="row">
@@ -196,7 +162,7 @@ impl Component for App {
                             <input type="number" min="0" max="50"
                                 disabled={self.state.type_counts_locked}
                                 value={self.state.minion_count.to_string()}
-                                onchange={set_minion_count}
+                                onchange={clamped(ctx, 0, 15, Msg::SetMinionCount)}
                             />
                         </div>
                         <div class="row">
@@ -204,7 +170,7 @@ impl Component for App {
                             <input type="number" min="0" max="50"
                                 disabled={self.state.type_counts_locked}
                                 value={self.state.demon_count.to_string()}
-                                onchange={set_demon_count}
+                                onchange={clamped(ctx, 0, 15, Msg::SetDemonCount)}
                             />
                         </div>
                     </div>
@@ -333,4 +299,20 @@ fn get_text(target: EventTarget) -> String {
         .value_of()
         .unchecked_into::<HtmlInputElement>()
         .value()
+}
+
+fn clamped<T>(ctx: &Context<App>, min: T, max: T, msg: fn(T) -> Msg) -> Callback<Event>
+where
+    T: Copy + Ord + std::str::FromStr + 'static,
+{
+    ctx.link().callback(move |e: Event| {
+        let count = get_text(e.target().unwrap()).parse::<T>().unwrap_or(min);
+        if count < min {
+            msg(min)
+        } else if count > max {
+            msg(max)
+        } else {
+            msg(count)
+        }
+    })
 }
