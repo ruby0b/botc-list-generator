@@ -13,9 +13,11 @@ pub struct Character {
 
 impl Character {
     pub fn id(&self) -> String {
-        let mut id = self.name.to_ascii_lowercase();
-        id.retain(|c| c.is_alphanumeric());
-        id
+        self.name
+            .chars()
+            .filter(|c| c.is_ascii_alphabetic())
+            .map(|c| c.to_ascii_lowercase())
+            .collect()
     }
 }
 
