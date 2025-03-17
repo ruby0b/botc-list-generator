@@ -76,16 +76,8 @@ impl State {
     }
 
     pub fn is_valid_character_list(&self) -> bool {
-        let type_counts = {
-            let mut it = HashMap::new();
-            it.insert(Type::Outsider, vec![self.outsider_count as i8]);
-            it.insert(Type::Minion, vec![self.minion_count as i8]);
-            it.insert(Type::Demon, vec![self.demon_count as i8]);
-            it
-        };
-
         self.selected.len() == self.player_count as usize
-            && validate_character_list(&self.selected_characters(), type_counts)
+            && validate_character_list(&self.selected_characters(), self.type_counts())
     }
 
     pub fn randomize_unlocked(&mut self) {
@@ -142,15 +134,7 @@ impl State {
                 it
             };
 
-            let type_counts = {
-                let mut it = HashMap::new();
-                it.insert(Type::Outsider, vec![self.outsider_count as i8]);
-                it.insert(Type::Minion, vec![self.minion_count as i8]);
-                it.insert(Type::Demon, vec![self.demon_count as i8]);
-                it
-            };
-
-            if validate_character_list(&new_character_list, type_counts) {
+            if validate_character_list(&new_character_list, self.type_counts()) {
                 let new_unlocked: BTreeSet<String> =
                     new_unlocked.into_iter().map(Character::id).collect();
                 if old_unlocked == new_unlocked {
@@ -162,11 +146,19 @@ impl State {
 
         None
     }
+
+    fn type_counts(&self) -> HashMap<Type, BTreeSet<i8>> {
+        let mut type_counts = HashMap::new();
+        type_counts.insert(Type::Outsider, BTreeSet::from([self.outsider_count as i8]));
+        type_counts.insert(Type::Minion, BTreeSet::from([self.minion_count as i8]));
+        type_counts.insert(Type::Demon, BTreeSet::from([self.demon_count as i8]));
+        type_counts
+    }
 }
 
 pub fn validate_character_list(
     characters: &[&Character],
-    mut type_counts: HashMap<Type, Vec<i8>>,
+    mut type_counts: HashMap<Type, BTreeSet<i8>>,
 ) -> bool {
     let conditions: Vec<_> = characters
         .iter()
@@ -175,6 +167,7 @@ pub fn validate_character_list(
         .collect();
 
     let mut type_is_any_count: HashMap<Type, bool> = HashMap::new();
+    let mut saturating_subs: HashMap<Type, BTreeSet<u8>> = HashMap::new();
 
     for condition in conditions {
         match condition {
@@ -194,25 +187,44 @@ pub fn validate_character_list(
             }
             Condition::Type {
                 r#type,
-                amount: TypeCond::Add(amounts),
-            } => {
-                let counts = type_counts.entry(r#type).or_default();
-                let mut new_counts = Vec::new();
-                for amount in amounts {
-                    for &count in counts.iter() {
-                        new_counts.push(amount + count);
-                    }
-                }
-                new_counts.dedup();
-                *counts = new_counts;
-            }
-            Condition::Type {
-                r#type,
                 amount: TypeCond::Any,
             } => {
                 type_is_any_count.insert(r#type, true);
             }
+            Condition::Type {
+                r#type,
+                amount: TypeCond::Add(amounts),
+            } => {
+                let counts = type_counts.entry(r#type).or_default();
+                let mut new_counts = BTreeSet::new();
+                for amount in amounts {
+                    for &count in counts.iter() {
+                        new_counts.insert(amount + count);
+                    }
+                }
+                *counts = new_counts;
+            }
+            Condition::Type {
+                r#type,
+                amount: TypeCond::SaturatingSub(amounts),
+            } => {
+                saturating_subs.entry(r#type).or_default().extend(amounts);
+            }
         }
+    }
+
+    for (r#type, amounts) in saturating_subs {
+        let counts = type_counts.entry(r#type).or_default();
+        let mut new_counts = BTreeSet::new();
+        for &amount in amounts.iter() {
+            for &count in counts.iter() {
+                if count >= 0 {
+                    let count = count.cast_unsigned();
+                    new_counts.insert(count.saturating_sub(amount).cast_signed());
+                }
+            }
+        }
+        *counts = new_counts;
     }
 
     for (r#type, counts) in type_counts {

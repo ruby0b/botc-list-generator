@@ -1,3 +1,5 @@
+use std::collections::BTreeSet;
+
 use serde::{Deserialize, Serialize};
 
 use super::character::Type;
@@ -14,6 +16,6 @@ pub enum Condition {
 pub enum TypeCond {
     None,
     Any,
-    #[serde(untagged)]
-    Add(Vec<i8>),
+    SaturatingSub(BTreeSet<u8>),
+    Add(BTreeSet<i8>),
 }

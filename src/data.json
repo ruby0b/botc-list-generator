@@ -54,10 +54,12 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        0,
-                        1
-                    ]
+                    "amount": {
+                        "ADD": [
+                            0,
+                            1
+                        ]
+                    }
                 }
             ]
         },
@@ -212,6 +214,15 @@
             "conditions": [
                 {
                     "character": "damsel"
+                },
+                {
+                    "type": "OUTSIDER",
+                    "amount": {
+                        "ADD": [
+                            0,
+                            1
+                        ]
+                    }
                 }
             ]
         },
@@ -595,9 +606,11 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        2
-                    ]
+                    "amount": {
+                        "ADD": [
+                            2
+                        ]
+                    }
                 }
             ]
         },
@@ -651,10 +664,12 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        -1,
-                        1
-                    ]
+                    "amount": {
+                        "ADD": [
+                            -1,
+                            1
+                        ]
+                    }
                 }
             ]
         },
@@ -780,9 +795,11 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        1
-                    ]
+                    "amount": {
+                        "ADD": [
+                            1
+                        ]
+                    }
                 }
             ]
         },
@@ -840,9 +857,11 @@
             "conditions": [
                 {
                     "type": "MINION",
-                    "amount": [
-                        1
-                    ]
+                    "amount": {
+                        "ADD": [
+                            1
+                        ]
+                    }
                 },
                 {
                     "type": "OUTSIDER",
@@ -894,9 +913,11 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        -1
-                    ]
+                    "amount": {
+                        "SATURATING_SUB": [
+                            1
+                        ]
+                    }
                 }
             ]
         },
@@ -1100,11 +1121,13 @@
             "conditions": [
                 {
                     "type": "OUTSIDER",
-                    "amount": [
-                        -1,
-                        0,
-                        1
-                    ]
+                    "amount": {
+                        "ADD": [
+                            -1,
+                            0,
+                            1
+                        ]
+                    }
                 }
             ]
         },
