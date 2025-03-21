@@ -156,8 +156,8 @@ impl Component for App {
                             {self.view_script_dropdown(ctx.link())}
                             <button onclick={ctx.link().callback(|_| Msg::ToggleScriptMenu)}>{"⚙️"}</button>
                         </div>
-                        {if self.state.expanded_script_menu {self.view_script_menu(ctx.link())} else {html! {}}}
                     </div>
+                    {if self.state.expanded_script_menu {self.view_script_menu(ctx.link())} else {html! {}}}
                     <div class="box">
                         <div class="row">
                             <label>{"Player Count: "}</label>
@@ -336,24 +336,26 @@ impl App {
             .iter()
             .any(|s| s.name == self.state.script);
         html! {
-            <div class="row">
-                <div>
-                    {if is_user_script {
-                        html!{<button onclick={link.callback(|_| Msg::DeleteScript)}>{"Delete Current Script"}</button>}
-                    } else {
-                        html!{}
-                    }}
-                    <p>
-                        {"Use the "}
-                        <a href="https://script.bloodontheclocktower.com/" target="_blank">{"BotC Script Builder"}</a>
-                        {" and export to clipboard (JSON):"}
-                    </p>
-                    <input type="text"
-                        placeholder="Paste your script here..."
-                        oninput={update_script_input}
-                        value={self.state.script_input.clone()}
-                    />
-                    <button onclick={link.callback(|_| Msg::ImportScript)}>{"Import"}</button>
+            <div class="box">
+                <div class="row">
+                    <div>
+                        {if is_user_script {
+                            html!{<button onclick={link.callback(|_| Msg::DeleteScript)}>{"Delete Current Script"}</button>}
+                        } else {
+                            html!{}
+                        }}
+                        <p>
+                            {"Use the "}
+                            <a href="https://script.bloodontheclocktower.com/" target="_blank">{"BotC Script Builder"}</a>
+                            {" and export to clipboard (JSON):"}
+                        </p>
+                        <input type="text"
+                            placeholder="Paste your script here..."
+                            oninput={update_script_input}
+                            value={self.state.script_input.clone()}
+                        />
+                        <button onclick={link.callback(|_| Msg::ImportScript)}>{"Import"}</button>
+                    </div>
                 </div>
             </div>
         }
