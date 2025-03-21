@@ -1,15 +1,14 @@
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 use rand::prelude::IndexedRandom as _;
-use serde::{Deserialize, Serialize};
 
 use super::{
     character::{Character, Type},
     condition::{Condition, TypeCond},
-    data::{Data, Script},
+    data::{IncludedData, Script, UserData},
 };
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct State {
     pub script: String,
     pub selected: BTreeMap<String, bool>,
@@ -18,7 +17,10 @@ pub struct State {
     pub outsider_count: u8,
     pub minion_count: u8,
     pub demon_count: u8,
-    pub data: Data,
+    pub included_data: IncludedData,
+    pub user_data: UserData,
+    pub expanded_script_menu: bool,
+    pub script_input: String,
 }
 
 impl State {
@@ -55,7 +57,7 @@ impl State {
             .collect()
     }
 
-    pub fn characters(&self) -> Vec<&Character> {
+    pub fn script_characters(&self) -> Vec<&Character> {
         let Some(script) = self.get_current_script() else {
             tracing::error!("Script not found: {}", self.script);
             return Vec::new();
@@ -67,12 +69,45 @@ impl State {
             .collect()
     }
 
+    fn characters(&self) -> impl Iterator<Item = &Character> {
+        self.included_data
+            .characters
+            .iter()
+            .chain(self.user_data.characters.iter())
+    }
+
     fn get_character(&self, id: &str) -> Option<&Character> {
-        self.data.characters.iter().find(|&r| r.id() == id)
+        self.characters().find(|&r| r.id() == id)
+    }
+
+    pub fn scripts(&self) -> impl Iterator<Item = &Script> {
+        self.included_data
+            .scripts
+            .iter()
+            .chain(self.user_data.scripts.iter())
     }
 
     fn get_current_script(&self) -> Option<&Script> {
-        self.data.scripts.iter().find(|&r| r.name == self.script)
+        self.scripts().find(|&r| r.name == self.script)
+    }
+
+    pub fn import_script(&mut self) {
+        let Ok(mut new_script) =
+            super::data::import_script(&self.script_input).inspect_err(|e| tracing::error!(?e))
+        else {
+            gloo_dialogs::alert("Invalid script format");
+            return;
+        };
+
+        // Ensure the script name is unique
+        let base_name = new_script.name.clone();
+        let mut i = 0;
+        while self.scripts().any(|s| s.name == new_script.name) {
+            i += 1;
+            new_script.name = format!("{base_name} ({i})");
+        }
+
+        self.user_data.scripts.insert(new_script);
     }
 
     pub fn is_valid_character_list(&self) -> bool {
@@ -113,11 +148,11 @@ impl State {
         let locked: Vec<&Character> = self
             .selected
             .iter()
-            .filter_map(|(id, _)| self.characters().into_iter().find(|c| &c.id() == id))
+            .filter_map(|(id, _)| self.script_characters().into_iter().find(|c| &c.id() == id))
             .collect();
 
         let all_characters: Vec<&Character> = self
-            .characters()
+            .script_characters()
             .into_iter()
             .filter(|c| !self.selected.contains_key(&c.id()))
             .collect();

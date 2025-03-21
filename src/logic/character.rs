@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::condition::Condition;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Character {
     pub name: String,
     pub description: String,

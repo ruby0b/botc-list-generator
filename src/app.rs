@@ -1,12 +1,12 @@
 use std::collections::BTreeMap;
 
+use gloo_storage::{LocalStorage, Storage as _};
 use wasm_bindgen::JsCast;
 use web_sys::{EventTarget, HtmlInputElement};
 use yew::{html::Scope, prelude::*};
 
 use crate::logic::{
     character::{Character, Type},
-    data::Data,
     state::{State, group_characters_by_type},
 };
 
@@ -22,11 +22,14 @@ pub enum Msg {
     SetMinionCount(u8),
     SetDemonCount(u8),
     SetScript(String),
+    ToggleScriptMenu,
+    DeleteScript,
+    UpdateScriptInput(String),
+    ImportScript,
 }
 
 pub struct App {
     state: State,
-    _focus_ref: NodeRef,
 }
 
 impl Component for App {
@@ -34,35 +37,36 @@ impl Component for App {
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
-        let data = serde_json::from_str::<Data>(include_str!("data.json")).unwrap();
+        let included_data = serde_json::from_str(include_str!("data.json")).unwrap();
+        let user_data = LocalStorage::get(crate::consts::STORAGE_KEY).unwrap_or_default();
         let state = State {
-            script: "Bad Moon Rising".to_string(),
+            script: crate::consts::DEFAULT_SCRIPT.to_string(),
             selected: BTreeMap::new(),
-            data,
             player_count: 10,
             type_counts_locked: true,
             outsider_count: 0,
             minion_count: 2,
             demon_count: 1,
+            included_data,
+            user_data,
+            expanded_script_menu: false,
+            script_input: String::new(),
         };
-        let focus_ref = NodeRef::default();
-        Self {
-            state,
-            _focus_ref: focus_ref,
-        }
+        Self { state }
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
+        let redraw = match msg {
             Msg::Toggle(character) => {
                 if self.state.selected.contains_key(&character) {
                     self.state.selected.remove(&character);
+                    true
                 } else if self.state.selected.len() < self.state.player_count as usize {
                     self.state.selected.insert(character, true);
+                    true
                 } else {
-                    return false;
+                    false
                 }
-                true
             }
             Msg::ToggleLock(character) => {
                 if let Some(locked) = self.state.selected.get_mut(&character) {
@@ -111,7 +115,32 @@ impl Component for App {
                 self.state.selected.clear();
                 true
             }
-        }
+            Msg::ToggleScriptMenu => {
+                self.state.expanded_script_menu = !self.state.expanded_script_menu;
+                true
+            }
+            Msg::DeleteScript => {
+                self.state
+                    .user_data
+                    .scripts
+                    .retain(|s| s.name != self.state.script);
+                self.state.script = crate::consts::DEFAULT_SCRIPT.to_string();
+                self.state.expanded_script_menu = false;
+                true
+            }
+            Msg::UpdateScriptInput(input) => {
+                self.state.script_input = input;
+                false
+            }
+            Msg::ImportScript => {
+                self.state.import_script();
+                self.state.script_input.clear();
+                self.state.expanded_script_menu = false;
+                true
+            }
+        };
+        LocalStorage::set(crate::consts::STORAGE_KEY, &self.state.user_data).unwrap();
+        redraw
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
@@ -125,7 +154,9 @@ impl Component for App {
                     <div class="box">
                         <div class="row">
                             {self.view_script_dropdown(ctx.link())}
+                            <button onclick={ctx.link().callback(|_| Msg::ToggleScriptMenu)}>{"⚙️"}</button>
                         </div>
+                        {if self.state.expanded_script_menu {self.view_script_menu(ctx.link())} else {html! {}}}
                     </div>
                     <div class="box">
                         <div class="row">
@@ -203,7 +234,7 @@ impl Component for App {
 
 impl App {
     fn view_character_list(&self, link: &Scope<Self>) -> Html {
-        let by_type = group_characters_by_type(&self.state.characters());
+        let by_type = group_characters_by_type(&self.state.script_characters());
         let mut li = Vec::new();
         for (r#type, cs) in by_type {
             li.push(self.view_type(&r#type));
@@ -275,7 +306,7 @@ impl App {
 
     fn view_script_dropdown(&self, link: &Scope<Self>) -> Html {
         let mut options = Vec::new();
-        for script in &self.state.data.scripts {
+        for script in self.state.scripts() {
             options.push(html! {
                 <option
                     selected={script.name == self.state.script}
@@ -292,6 +323,39 @@ impl App {
             <label for="script">{"Script: "}</label>
             <select name="script" id="script" onchange={set_script}>{ for options }</select>
             </>
+        }
+    }
+
+    fn view_script_menu(&self, link: &Scope<Self>) -> Html {
+        let update_script_input =
+            link.callback(|e: InputEvent| Msg::UpdateScriptInput(get_text(e.target().unwrap())));
+        let is_user_script = self
+            .state
+            .user_data
+            .scripts
+            .iter()
+            .any(|s| s.name == self.state.script);
+        html! {
+            <div class="row">
+                <div>
+                    {if is_user_script {
+                        html!{<button onclick={link.callback(|_| Msg::DeleteScript)}>{"Delete Current Script"}</button>}
+                    } else {
+                        html!{}
+                    }}
+                    <p>
+                        {"Use the "}
+                        <a href="https://script.bloodontheclocktower.com/" target="_blank">{"BotC Script Builder"}</a>
+                        {" and export to clipboard (JSON):"}
+                    </p>
+                    <input type="text"
+                        placeholder="Paste your script here..."
+                        oninput={update_script_input}
+                        value={self.state.script_input.clone()}
+                    />
+                    <button onclick={link.callback(|_| Msg::ImportScript)}>{"Import"}</button>
+                </div>
+            </div>
         }
     }
 }

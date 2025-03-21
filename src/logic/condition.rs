@@ -4,14 +4,14 @@ use serde::{Deserialize, Serialize};
 
 use super::character::Type;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(untagged)]
 pub enum Condition {
     Character { character: String },
     Type { r#type: Type, amount: TypeCond },
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TypeCond {
     None,

@@ -26,7 +26,6 @@ body {
 main {
   color: var(--botc-colour-cream-springwood);
   font-family: sans-serif;
-  text-align: center;
 }
 
 img {
@@ -40,6 +39,12 @@ h3 {
 
 h4 {
   margin: 0;
+}
+
+p {
+  font-size: small;
+  margin-top: 0.2lh;
+  margin-bottom: 0.2lh;
 }
 
 ul {
@@ -155,8 +160,5 @@ ul {
 }
 
 .content p {
-  font-size: small;
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
   min-height: 3lh;
 }

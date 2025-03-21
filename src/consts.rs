@@ -10,4 +10,8 @@ pub const FABLED_ICON: &str =
 pub const TRAVELLER_ICON: &str =
     "https://wiki.bloodontheclocktower.com/images/0/07/Generic_traveller.png";
 
+pub const DEFAULT_SCRIPT: &str = "Trouble Brewing";
+
 pub const MAX_GENERATION_ITERATIONS: usize = 10_000;
+
+pub const STORAGE_KEY: &str = "botc.state";

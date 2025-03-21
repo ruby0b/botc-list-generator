@@ -71,6 +71,7 @@ version = "0.1.0"
 dependencies = [
  "getrandom 0.3.1",
  "gloo-dialogs 0.2.0",
+ "gloo-storage 0.3.0",
  "rand",
  "serde",
  "serde_json",
