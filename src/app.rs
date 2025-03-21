@@ -60,13 +60,10 @@ impl Component for App {
             Msg::Toggle(character) => {
                 if self.state.selected.contains_key(&character) {
                     self.state.selected.remove(&character);
-                    true
-                } else if self.state.selected.len() < self.state.player_count as usize {
-                    self.state.selected.insert(character, true);
-                    true
                 } else {
-                    false
+                    self.state.selected.insert(character, true);
                 }
+                true
             }
             Msg::ToggleLock(character) => {
                 if let Some(locked) = self.state.selected.get_mut(&character) {

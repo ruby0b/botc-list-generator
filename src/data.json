@@ -440,13 +440,23 @@
             "name": "Village Idiot 2",
             "description": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png"
+            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png",
+            "conditions": [
+                {
+                    "character": "villageidiot1"
+                }
+            ]
         },
         {
             "name": "Village Idiot 3",
             "description": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png"
+            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png",
+            "conditions": [
+                {
+                    "character": "villageidiot2"
+                }
+            ]
         },
         {
             "name": "Virgin",

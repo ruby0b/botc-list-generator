@@ -1,5 +1,3 @@
-use std::collections::BTreeSet;
-
 use serde::{Deserialize, Serialize};
 
 use super::character::Character;
@@ -12,13 +10,14 @@ pub struct IncludedData {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct UserData {
-    pub characters: BTreeSet<Character>,
-    pub scripts: BTreeSet<Script>,
+    pub characters: Vec<Character>,
+    pub scripts: Vec<Script>,
 }
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Script {
     pub name: String,
-    pub characters: BTreeSet<String>,
+    pub characters: Vec<String>,
 }
 
 pub fn import_script(json: &str) -> Result<Script, serde_json::Error> {
@@ -32,7 +31,7 @@ pub fn import_script(json: &str) -> Result<Script, serde_json::Error> {
         .and_then(|s| (!s.is_empty()).then_some(s))
         .unwrap_or("My Script")
         .to_string();
-    let characters: BTreeSet<_> = vec
+    let characters = vec
         .iter()
         .filter_map(|v| v.as_str())
         .map(str::to_string)

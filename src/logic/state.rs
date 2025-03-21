@@ -62,11 +62,14 @@ impl State {
             tracing::error!("Script not found: {}", self.script);
             return Vec::new();
         };
-        script
+        let x: Vec<_> = script
             .characters
             .iter()
             .filter_map(|id| self.get_character(id))
-            .collect()
+            .collect();
+        let y = x.iter().map(|c| c.id()).collect::<Vec<_>>();
+        tracing::warn!(?y);
+        x
     }
 
     fn characters(&self) -> impl Iterator<Item = &Character> {
@@ -77,18 +80,35 @@ impl State {
     }
 
     fn get_character(&self, id: &str) -> Option<&Character> {
-        self.characters().find(|&r| r.id() == id)
+        self.characters().find(|&c| c.id() == id)
     }
 
-    pub fn scripts(&self) -> impl Iterator<Item = &Script> {
+    pub fn scripts(&self) -> impl Iterator<Item = Script> {
         self.included_data
             .scripts
             .iter()
             .chain(self.user_data.scripts.iter())
+            .map(|s| {
+                let mut it = s.clone();
+                // Filter out characters that are not in the data
+                // and duplicate characters that have the same id.
+                it.characters = it
+                    .characters
+                    .iter()
+                    .flat_map(|id| {
+                        self.characters()
+                            .filter(|&c| (&c.id_no_numeric() == id))
+                            .map(|c| c.id())
+                            .collect::<Vec<_>>()
+                    })
+                    .collect();
+                tracing::warn!(?it);
+                it
+            })
     }
 
-    fn get_current_script(&self) -> Option<&Script> {
-        self.scripts().find(|&r| r.name == self.script)
+    fn get_current_script(&self) -> Option<Script> {
+        self.scripts().find(|s| s.name == self.script)
     }
 
     pub fn import_script(&mut self) {
@@ -107,7 +127,7 @@ impl State {
             new_script.name = format!("{base_name} ({i})");
         }
 
-        self.user_data.scripts.insert(new_script);
+        self.user_data.scripts.push(new_script);
     }
 
     pub fn is_valid_character_list(&self) -> bool {
@@ -170,7 +190,7 @@ impl State {
             };
 
             if validate_character_list(&new_character_list, self.type_counts()) {
-                let new_unlocked: BTreeSet<String> =
+                let new_unlocked: BTreeSet<_> =
                     new_unlocked.into_iter().map(Character::id).collect();
                 if old_unlocked == new_unlocked {
                     continue;
@@ -284,6 +304,9 @@ pub fn group_characters_by_type<'a>(
             .entry(character.r#type)
             .or_insert_with(Vec::new)
             .push(character);
+    }
+    for (_, group) in grouped.iter_mut() {
+        group.sort_unstable();
     }
     grouped
 }

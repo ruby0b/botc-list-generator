@@ -15,6 +15,14 @@ impl Character {
     pub fn id(&self) -> String {
         self.name
             .chars()
+            .filter(|c| c.is_ascii_alphanumeric())
+            .map(|c| c.to_ascii_lowercase())
+            .collect()
+    }
+
+    pub fn id_no_numeric(&self) -> String {
+        self.name
+            .chars()
             .filter(|c| c.is_ascii_alphabetic())
             .map(|c| c.to_ascii_lowercase())
             .collect()
