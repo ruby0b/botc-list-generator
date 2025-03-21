@@ -29,6 +29,7 @@ pub fn import_script(json: &str) -> Result<Script, serde_json::Error> {
         .next()
         .and_then(|v| v.get("name"))
         .and_then(|v| v.as_str())
+        .and_then(|s| (!s.is_empty()).then_some(s))
         .unwrap_or("My Script")
         .to_string();
     let characters: BTreeSet<_> = vec
