@@ -7,7 +7,7 @@ use yew::{html::Scope, prelude::*};
 
 use crate::logic::{
     character::{Character, Type},
-    state::{State, group_characters_by_type},
+    state::{Selected, State, group_characters_by_type},
 };
 
 pub enum Msg {
@@ -61,19 +61,21 @@ impl Component for App {
                 if self.state.selected.contains_key(&character) {
                     self.state.selected.remove(&character);
                 } else {
-                    self.state.selected.insert(character, true);
+                    self.state
+                        .selected
+                        .insert(character, Selected { locked: true });
                 }
                 true
             }
             Msg::ToggleLock(character) => {
-                if let Some(locked) = self.state.selected.get_mut(&character) {
-                    *locked = !*locked;
+                if let Some(selected) = self.state.selected.get_mut(&character) {
+                    selected.locked = !selected.locked;
                 }
                 true
             }
             Msg::SetLockForAll(value) => {
-                for (_, locked) in self.state.selected.iter_mut() {
-                    *locked = value;
+                for (_, selected) in self.state.selected.iter_mut() {
+                    selected.locked = value;
                 }
                 true
             }
@@ -275,14 +277,14 @@ impl App {
             let id = char.id();
             link.callback(move |_| Msg::ToggleLock(id.clone()))
         };
-        let locked = self
+        let selected = self
             .state
             .selected
             .get(&char.id())
-            .copied()
-            .unwrap_or(false);
+            .cloned()
+            .unwrap_or(Default::default());
         html! {
-            <li class={classes!("clickable", if locked {"locked"} else {"unlocked"})} onclick={toggle_lock}>
+            <li class={classes!("clickable", if selected.locked {"locked"} else {"unlocked"})} onclick={toggle_lock}>
                 <img src={char.icon.clone()}/>
                 <div>
                     <h4>{&char.name}</h4>

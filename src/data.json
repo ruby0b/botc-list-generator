@@ -851,7 +851,23 @@
             "name": "Lil' Monsta",
             "description": "Each night, Minions choose who babysits Lil' Monsta & 'is the Demon'. Each night*, a player might die. [+1 Minion]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c3/Icon_lilmonsta.png"
+            "icon": "https://wiki.bloodontheclocktower.com//images/c/c3/Icon_lilmonsta.png",
+            "conditions": [
+                {
+                    "type": "MINION",
+                    "amount": {
+                        "ADD": [
+                            1
+                        ]
+                    }
+                },
+                {
+                    "type": "OUTSIDER",
+                    "amount": {
+                        "INCREASE_PLAYER_COUNT": 1
+                    }
+                }
+            ]
         },
         {
             "name": "Lleech",

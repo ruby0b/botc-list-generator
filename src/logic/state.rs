@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 
 use rand::prelude::IndexedRandom as _;
 
@@ -11,7 +11,7 @@ use super::{
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct State {
     pub script: String,
-    pub selected: BTreeMap<String, bool>,
+    pub selected: BTreeMap<String, Selected>,
     pub player_count: u8,
     pub type_counts_locked: bool,
     pub outsider_count: u8,
@@ -21,6 +21,11 @@ pub struct State {
     pub user_data: UserData,
     pub expanded_script_menu: bool,
     pub script_input: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct Selected {
+    pub locked: bool,
 }
 
 impl State {
@@ -62,14 +67,11 @@ impl State {
             tracing::error!("Script not found: {}", self.script);
             return Vec::new();
         };
-        let x: Vec<_> = script
+        script
             .characters
             .iter()
             .filter_map(|id| self.get_character(id))
-            .collect();
-        let y = x.iter().map(|c| c.id()).collect::<Vec<_>>();
-        tracing::warn!(?y);
-        x
+            .collect()
     }
 
     fn characters(&self) -> impl Iterator<Item = &Character> {
@@ -102,7 +104,6 @@ impl State {
                             .collect::<Vec<_>>()
                     })
                     .collect();
-                tracing::warn!(?it);
                 it
             })
     }
@@ -131,18 +132,24 @@ impl State {
     }
 
     pub fn is_valid_character_list(&self) -> bool {
-        self.selected.len() == self.player_count as usize
-            && validate_character_list(&self.selected_characters(), self.type_counts())
+        let (valid, extra) = validate_list(&self.selected_characters(), self.type_counts());
+        valid && self.selected.len() == (self.player_count + extra) as usize
     }
 
     pub fn randomize_unlocked(&mut self) {
         let old_unlocked = self
             .selected
-            .extract_if(|_, locked| !*locked)
+            .extract_if(|_, selected| !selected.locked)
             .map(|(id, _)| id)
             .collect();
 
-        match self.get_randomized_characters(old_unlocked) {
+        let locked: Vec<_> = self
+            .selected
+            .iter()
+            .filter_map(|(id, _)| self.script_characters().into_iter().find(|c| &c.id() == id))
+            .collect();
+
+        match self.get_randomized_characters(&locked, &old_unlocked) {
             Some((i, new_selected)) => {
                 tracing::info!("Valid permutation found after {i} iterations");
                 self.selected
@@ -161,41 +168,34 @@ impl State {
 
     fn get_randomized_characters(
         &self,
-        old_unlocked: BTreeSet<String>,
+        locked: &[&Character],
+        old_unlocked: &BTreeSet<String>,
     ) -> Option<(usize, BTreeSet<String>)> {
-        let missing = self.player_count as usize - self.selected.len();
+        let missing = self.player_count as usize - locked.len();
 
-        let locked: Vec<&Character> = self
-            .selected
-            .iter()
-            .filter_map(|(id, _)| self.script_characters().into_iter().find(|c| &c.id() == id))
-            .collect();
-
-        let all_characters: Vec<&Character> = self
+        let character_pool: Vec<&Character> = self
             .script_characters()
             .into_iter()
-            .filter(|c| !self.selected.contains_key(&c.id()))
+            .filter(|c| !locked.iter().any(|locked_c| locked_c.id() == c.id()))
             .collect();
 
+        let mut extras_set = HashSet::from([0]);
         for i in 0..crate::consts::MAX_GENERATION_ITERATIONS {
-            let new_unlocked: Vec<&Character> = all_characters
-                .choose_multiple(&mut rand::rng(), missing)
-                .copied()
-                .collect();
+            for current_extras in extras_set.clone() {
+                let new = character_pool
+                    .choose_multiple(&mut rand::rng(), missing + current_extras as usize)
+                    .copied()
+                    .collect::<Vec<_>>();
 
-            let new_character_list = {
-                let mut it = locked.clone();
-                it.extend(new_unlocked.iter());
-                it
-            };
+                let (valid, extras) = validate_list(&[locked, &new].concat(), self.type_counts());
+                extras_set.insert(extras);
 
-            if validate_character_list(&new_character_list, self.type_counts()) {
-                let new_unlocked: BTreeSet<_> =
-                    new_unlocked.into_iter().map(Character::id).collect();
-                if old_unlocked == new_unlocked {
-                    continue;
+                if valid && extras == current_extras {
+                    let new_unlocked = new.into_iter().map(Character::id).collect::<BTreeSet<_>>();
+                    if &new_unlocked != old_unlocked {
+                        return Some((i + 1, new_unlocked));
+                    }
                 }
-                return Some((i + 1, new_unlocked));
             }
         }
 
@@ -211,10 +211,10 @@ impl State {
     }
 }
 
-pub fn validate_character_list(
+fn validate_list(
     characters: &[&Character],
     mut type_counts: HashMap<Type, BTreeSet<i8>>,
-) -> bool {
+) -> (bool, u8) {
     let conditions: Vec<_> = characters
         .iter()
         .filter_map(|c| c.conditions.clone())
@@ -224,11 +224,13 @@ pub fn validate_character_list(
     let mut type_is_any_count: HashMap<Type, bool> = HashMap::new();
     let mut saturating_subs: HashMap<Type, BTreeSet<u8>> = HashMap::new();
 
+    let mut valid = true;
+    let mut extra_characters = 0;
     for condition in conditions {
         match condition {
             Condition::Character { character } => {
                 if !characters.iter().any(|c| c.id() == character) {
-                    return false;
+                    valid = false;
                 }
             }
             Condition::Type {
@@ -236,7 +238,7 @@ pub fn validate_character_list(
                 amount: TypeCond::None,
             } => {
                 if characters.iter().any(|c| c.r#type == r#type) {
-                    return false;
+                    valid = false;
                 }
                 type_is_any_count.insert(r#type, true);
             }
@@ -265,6 +267,12 @@ pub fn validate_character_list(
             } => {
                 saturating_subs.entry(r#type).or_default().extend(amounts);
             }
+            Condition::Type {
+                r#type: _,
+                amount: TypeCond::IncreasePlayerCount(amount),
+            } => {
+                extra_characters += amount;
+            }
         }
     }
 
@@ -288,11 +296,11 @@ pub fn validate_character_list(
         }
         let actual_count = characters.iter().filter(|c| c.r#type == r#type).count() as i8;
         if !counts.contains(&actual_count) {
-            return false;
+            valid = false;
         }
     }
 
-    true
+    (valid, extra_characters)
 }
 
 pub fn group_characters_by_type<'a>(

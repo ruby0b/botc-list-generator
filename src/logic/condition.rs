@@ -18,4 +18,6 @@ pub enum TypeCond {
     Any,
     SaturatingSub(BTreeSet<u8>),
     Add(BTreeSet<i8>),
+    // TODO: doesn't have anything to do with a type
+    IncreasePlayerCount(u8),
 }
