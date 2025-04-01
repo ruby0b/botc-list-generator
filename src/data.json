@@ -693,7 +693,15 @@
             "name": "Marionette",
             "description": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cf/Icon_marionette.png"
+            "icon": "https://wiki.bloodontheclocktower.com//images/c/cf/Icon_marionette.png",
+            "conditions": [
+                {
+                    "extra_characters": [
+                        "MINION",
+                        -1
+                    ]
+                }
+            ]
         },
         {
             "name": "Mastermind",
@@ -862,10 +870,7 @@
                     }
                 },
                 {
-                    "type": "OUTSIDER",
-                    "amount": {
-                        "INCREASE_PLAYER_COUNT": 1
-                    }
+                    "extra_characters": 1
                 }
             ]
         },
@@ -892,6 +897,12 @@
                 {
                     "type": "OUTSIDER",
                     "amount": "ANY"
+                },
+                {
+                    "extra_characters": [
+                        "MINION",
+                        0
+                    ]
                 }
             ]
         },

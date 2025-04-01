@@ -4,7 +4,7 @@ use rand::prelude::IndexedRandom as _;
 
 use super::{
     character::{Character, Type},
-    condition::{Condition, TypeCond},
+    condition::{Condition, ExtraCharacters, TypeCond},
     data::{IncludedData, Script, UserData},
 };
 
@@ -267,11 +267,17 @@ fn validate_list(
             } => {
                 saturating_subs.entry(r#type).or_default().extend(amounts);
             }
-            Condition::Type {
-                r#type: _,
-                amount: TypeCond::IncreasePlayerCount(amount),
+            Condition::ExtraCharacters {
+                extra_characters: ExtraCharacters::Const(extra),
             } => {
-                extra_characters += amount;
+                extra_characters += extra;
+            }
+            Condition::ExtraCharacters {
+                extra_characters: ExtraCharacters::Type(r#type, addend),
+            } => {
+                let type_count = characters.iter().filter(|c| c.r#type == r#type).count() as i8;
+                let extra = (type_count + addend).try_into().unwrap_or(0);
+                extra_characters += extra;
             }
         }
     }
