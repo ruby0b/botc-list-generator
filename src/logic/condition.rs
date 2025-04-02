@@ -29,6 +29,6 @@ pub enum TypeCond {
 pub enum ExtraCharacters {
     /// add u8 extra characters
     Const(u8),
-    /// add (count of $Type characters + i8) extra characters
-    Type(Type, i8),
+    /// add (count of $Type characters - u8) extra characters
+    Type(Type, u8),
 }

@@ -225,7 +225,8 @@ fn validate_list(
     let mut saturating_subs: HashMap<Type, BTreeSet<u8>> = HashMap::new();
 
     let mut valid = true;
-    let mut extra_characters = 0;
+    let mut extras = 0;
+    let mut extras_by_type = HashMap::new();
     for condition in conditions {
         match condition {
             Condition::Character { character } => {
@@ -269,15 +270,16 @@ fn validate_list(
             }
             Condition::ExtraCharacters {
                 extra_characters: ExtraCharacters::Const(extra),
-            } => {
-                extra_characters += extra;
-            }
+            } => extras += extra,
             Condition::ExtraCharacters {
-                extra_characters: ExtraCharacters::Type(r#type, addend),
+                extra_characters: ExtraCharacters::Type(r#type, sub),
             } => {
-                let type_count = characters.iter().filter(|c| c.r#type == r#type).count() as i8;
-                let extra = (type_count + addend).try_into().unwrap_or(0);
-                extra_characters += extra;
+                let type_count = characters.iter().filter(|c| c.r#type == r#type).count() as u8;
+                let extra = type_count.saturating_sub(sub);
+                extras_by_type
+                    .entry(r#type)
+                    .and_modify(|e: &mut u8| *e = (*e).max(extra))
+                    .or_insert(extra);
             }
         }
     }
@@ -306,7 +308,7 @@ fn validate_list(
         }
     }
 
-    (valid, extra_characters)
+    (valid, extras + extras_by_type.values().sum::<u8>())
 }
 
 pub fn group_characters_by_type<'a>(
