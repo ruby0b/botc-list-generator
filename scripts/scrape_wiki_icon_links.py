@@ -8,9 +8,9 @@ from bs4 import BeautifulSoup
 import sys
 import json
 
-BASE_URL = "https://wiki.bloodontheclocktower.com/"
+BASE_URL = "https://wiki.bloodontheclocktower.com"
 DEFAULT_URLS = [
-    BASE_URL + url
+    f"{BASE_URL}/{url}"
     for url in [
         "Trouble_Brewing",
         "Sects_%26_Violets",

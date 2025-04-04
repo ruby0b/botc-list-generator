@@ -4,37 +4,37 @@
             "name": "Acrobat",
             "description": "Each night*, choose a player: if they are or become drunk or poisoned tonight, you die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b5/Icon_acrobat.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b5/Icon_acrobat.png"
         },
         {
             "name": "Alchemist",
             "description": "You have a Minion ability. When using this, the Storyteller may prompt you to choose differently.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/54/Icon_alchemist.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/54/Icon_alchemist.png"
         },
         {
             "name": "Alsaahir",
             "description": "Each day, if you publicly guess which players are Minion(s) and which are Demon(s), good wins.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/8e/Icon_alsaahir.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/8e/Icon_alsaahir.png"
         },
         {
             "name": "Amnesiac",
             "description": "You do not know what your ability is. Each day, privately guess what it is: you learn how accurate you are.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/26/Icon_amnesiac.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/26/Icon_amnesiac.png"
         },
         {
             "name": "Artist",
             "description": "Once per game, during the day, privately ask the Storyteller any yes/no question.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/1a/Icon_artist.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/1a/Icon_artist.png"
         },
         {
             "name": "Atheist",
             "description": "The Storyteller can break the game rules, and if executed, good wins, even if you are dead. [No evil characters]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/43/Icon_atheist.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/43/Icon_atheist.png",
             "conditions": [
                 {
                     "type": "DEMON",
@@ -50,7 +50,7 @@
             "name": "Balloonist",
             "description": "Each night, you learn a player of a different character type than last night. [+0 or +1 Outsider]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cb/Icon_balloonist.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/cb/Icon_balloonist.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -67,37 +67,37 @@
             "name": "Banshee",
             "description": "If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/63/Icon_banshee.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/63/Icon_banshee.png"
         },
         {
             "name": "Bounty Hunter",
             "description": "You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Townsfolk is evil]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/5b/Icon_bountyhunter.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/5b/Icon_bountyhunter.png"
         },
         {
             "name": "Cannibal",
             "description": "You have the ability of the recently killed executee. If they are evil, you are poisoned until a good player dies by execution.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/8e/Icon_cannibal.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/8e/Icon_cannibal.png"
         },
         {
             "name": "Chambermaid",
             "description": "Each night, choose 2 alive players (not yourself): you learn how many woke tonight due to their ability.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/87/Icon_chambermaid.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/87/Icon_chambermaid.png"
         },
         {
             "name": "Chef",
             "description": "You start knowing how many pairs of evil players there are.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d5/Icon_chef.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d5/Icon_chef.png"
         },
         {
             "name": "Choirboy",
             "description": "If the Demon kills the King, you learn which player is the Demon. [+the King]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d9/Icon_choirboy.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d9/Icon_choirboy.png",
             "conditions": [
                 {
                     "character": "king"
@@ -108,109 +108,109 @@
             "name": "Clockmaker",
             "description": "You start knowing how many steps from the Demon to its nearest Minion.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/3/3d/Icon_clockmaker.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/3/3d/Icon_clockmaker.png"
         },
         {
             "name": "Courtier",
             "description": "Once per game, at night, choose a character: they are drunk for 3 nights & 3 days.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e0/Icon_courtier.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e0/Icon_courtier.png"
         },
         {
             "name": "Cult Leader",
             "description": "Each night, you become the alignment of an alive neighbor. If all good players choose to join your cult, your team wins.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6c/Icon_cultleader.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6c/Icon_cultleader.png"
         },
         {
             "name": "Dreamer",
             "description": "Each night, choose a player (not yourself or Travellers): you learn 1 good & 1 evil character, 1 of which is correct.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f2/Icon_dreamer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f2/Icon_dreamer.png"
         },
         {
             "name": "Empath",
             "description": "Each night, you learn how many of your 2 alive neighbors are evil.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/13/Icon_empath.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/13/Icon_empath.png"
         },
         {
             "name": "Engineer",
             "description": "Once per game, at night, choose which Minions or which Demon is in play.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b9/Icon_engineer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b9/Icon_engineer.png"
         },
         {
             "name": "Exorcist",
             "description": "Each night*, choose a player (different to last night): the Demon, if chosen, learns who you are then doesn't wake tonight.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c2/Icon_exorcist.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c2/Icon_exorcist.png"
         },
         {
             "name": "Farmer",
             "description": "When you die at night, an alive good player becomes a Farmer.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/fe/Icon_farmer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/fe/Icon_farmer.png"
         },
         {
             "name": "Fisherman",
             "description": "Once per game, during the day, visit the Storyteller for some advice to help your team win.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/19/Icon_fisherman.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/19/Icon_fisherman.png"
         },
         {
             "name": "Flowergirl",
             "description": "Each night*, you learn if a Demon voted today.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/ac/Icon_flowergirl.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/ac/Icon_flowergirl.png"
         },
         {
             "name": "Fool",
             "description": "The 1st time you die, you don't.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d9/Icon_fool.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d9/Icon_fool.png"
         },
         {
             "name": "Fortune Teller",
             "description": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/97/Icon_fortuneteller.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/97/Icon_fortuneteller.png"
         },
         {
             "name": "Gambler",
             "description": "Each night*, choose a player & guess their character: if you guess wrong, you die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/fd/Icon_gambler.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/fd/Icon_gambler.png"
         },
         {
             "name": "General",
             "description": "Each night, you learn which alignment the Storyteller believes is winning: good, evil, or neither.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/99/Icon_general.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/99/Icon_general.png"
         },
         {
             "name": "Gossip",
             "description": "Each day, you may make a public statement. Tonight, if it was true, a player dies.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c7/Icon_gossip.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c7/Icon_gossip.png"
         },
         {
             "name": "Grandmother",
             "description": "You start knowing a good player & their character. If the Demon kills them, you die too.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/26/Icon_grandmother.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/26/Icon_grandmother.png"
         },
         {
             "name": "High Priestess",
             "description": "Each night, learn which player the Storyteller believes you should talk to most.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/63/Icon_highpriestess.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/63/Icon_highpriestess.png"
         },
         {
             "name": "Huntsman",
             "description": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a1/Icon_huntsman.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a1/Icon_huntsman.png",
             "conditions": [
                 {
                     "character": "damsel"
@@ -230,217 +230,217 @@
             "name": "Innkeeper",
             "description": "Each night*, choose 2 players: they can't die tonight, but 1 is drunk until dusk.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/0c/Icon_innkeeper.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/0c/Icon_innkeeper.png"
         },
         {
             "name": "Investigator",
             "description": "You start knowing that 1 of 2 players is a particular Minion.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/ad/Icon_investigator.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/ad/Icon_investigator.png"
         },
         {
             "name": "Juggler",
             "description": "On your 1st day, publicly guess up to 5 players' characters. That night, you learn how many you got correct.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/42/Icon_juggler.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/42/Icon_juggler.png"
         },
         {
             "name": "King",
             "description": "Each night, if the dead equal or outnumber the living, you learn 1 alive character. The Demon knows you are the King.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/dc/Icon_king.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/dc/Icon_king.png"
         },
         {
             "name": "Knight",
             "description": "You start knowing 2 players that are not the Demon.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/8e/Icon_knight.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/8e/Icon_knight.png"
         },
         {
             "name": "Librarian",
             "description": "You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e0/Icon_librarian.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e0/Icon_librarian.png"
         },
         {
             "name": "Lycanthrope",
             "description": "Each night*, choose an alive player. If good, they die & the Demon doesn\u2019t kill tonight. One good player registers as evil.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/92/Icon_lycanthrope.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/92/Icon_lycanthrope.png"
         },
         {
             "name": "Magician",
             "description": "The Demon thinks you are a Minion. Minions think you are a Demon.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/93/Icon_magician.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/93/Icon_magician.png"
         },
         {
             "name": "Mathematician",
             "description": "Each night, you learn how many players' abilities worked abnormally (since dawn) due to another character's ability.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f1/Icon_mathematician.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f1/Icon_mathematician.png"
         },
         {
             "name": "Mayor",
             "description": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a1/Icon_mayor.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a1/Icon_mayor.png"
         },
         {
             "name": "Minstrel",
             "description": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/24/Icon_minstrel.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/24/Icon_minstrel.png"
         },
         {
             "name": "Monk",
             "description": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/7c/Icon_monk.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/7c/Icon_monk.png"
         },
         {
             "name": "Nightwatchman",
             "description": "Once per game, at night, choose a player: they learn you are the Nightwatchman.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f0/Icon_nightwatchman.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f0/Icon_nightwatchman.png"
         },
         {
             "name": "Noble",
             "description": "You start knowing 3 players, 1 and only 1 of which is evil.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cc/Icon_noble.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/cc/Icon_noble.png"
         },
         {
             "name": "Oracle",
             "description": "Each night*, you learn how many dead players are evil.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/bb/Icon_oracle.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/bb/Icon_oracle.png"
         },
         {
             "name": "Pacifist",
             "description": "Executed good players might not die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/5d/Icon_pacifist.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/5d/Icon_pacifist.png"
         },
         {
             "name": "Philosopher",
             "description": "Once per game, at night, choose a good character: gain that ability. If this character is in play, they are drunk.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/5d/Icon_philosopher.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/5d/Icon_philosopher.png"
         },
         {
             "name": "Pixie",
             "description": "You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d5/Icon_pixie.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d5/Icon_pixie.png"
         },
         {
             "name": "Poppy Grower",
             "description": "Minions & Demons do not know each other. If you die, they learn who each other are that night.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/91/Icon_poppygrower.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/91/Icon_poppygrower.png"
         },
         {
             "name": "Preacher",
             "description": "Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/82/Icon_preacher.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/82/Icon_preacher.png"
         },
         {
             "name": "Professor",
             "description": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/65/Icon_professor.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/65/Icon_professor.png"
         },
         {
             "name": "Ravenkeeper",
             "description": "If you die at night, you are woken to choose a player: you learn their character.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/ef/Icon_ravenkeeper.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/ef/Icon_ravenkeeper.png"
         },
         {
             "name": "Sage",
             "description": "If the Demon kills you, you learn that it is 1 of 2 players.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a0/Icon_sage.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a0/Icon_sage.png"
         },
         {
             "name": "Sailor",
             "description": "Each night, choose an alive player: either you or they are drunk until dusk. You can't die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/16/Icon_sailor.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/16/Icon_sailor.png"
         },
         {
             "name": "Savant",
             "description": "Each day, you may visit the Storyteller to learn 2 things in private: 1 is true & 1 is false.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d5/Icon_savant.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d5/Icon_savant.png"
         },
         {
             "name": "Seamstress",
             "description": "Once per game, at night, choose 2 players (not yourself): you learn if they are the same alignment.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/53/Icon_seamstress.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/53/Icon_seamstress.png"
         },
         {
             "name": "Shugenja",
             "description": "You start knowing if your closest evil player is clockwise or anti-clockwise. If equidistant, this info is arbitrary.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/11/Icon_shugenja.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/11/Icon_shugenja.png"
         },
         {
             "name": "Slayer",
             "description": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d3/Icon_slayer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d3/Icon_slayer.png"
         },
         {
             "name": "Snake Charmer",
             "description": "Each night, choose an alive player: a chosen Demon swaps characters & alignments with you & is then poisoned.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/08/Icon_snakecharmer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/08/Icon_snakecharmer.png"
         },
         {
             "name": "Soldier",
             "description": "You are safe from the Demon.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c3/Icon_soldier.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c3/Icon_soldier.png"
         },
         {
             "name": "Steward",
             "description": "You start knowing 1 good player.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/fe/Icon_steward.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/fe/Icon_steward.png"
         },
         {
             "name": "Tea Lady",
             "description": "If both your alive neighbors are good, they can't die.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/16/Icon_tealady.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/16/Icon_tealady.png"
         },
         {
             "name": "Town Crier",
             "description": "Each night*, you learn if a Minion nominated today.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/ef/Icon_towncrier.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/ef/Icon_towncrier.png"
         },
         {
             "name": "Undertaker",
             "description": "Each night*, you learn which character died by execution today.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/05/Icon_undertaker.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/05/Icon_undertaker.png"
         },
         {
             "name": "Village Idiot 1",
             "description": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/da/Icon_villageidiot.png"
         },
         {
             "name": "Village Idiot 2",
             "description": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/da/Icon_villageidiot.png",
             "conditions": [
                 {
                     "character": "villageidiot1"
@@ -451,7 +451,7 @@
             "name": "Village Idiot 3",
             "description": "Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/da/Icon_villageidiot.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/da/Icon_villageidiot.png",
             "conditions": [
                 {
                     "character": "villageidiot2"
@@ -462,157 +462,157 @@
             "name": "Virgin",
             "description": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d3/Icon_virgin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d3/Icon_virgin.png"
         },
         {
             "name": "Washerwoman",
             "description": "You start knowing that 1 of 2 players is a particular Townsfolk",
             "type": "TOWNSFOLK",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/85/Icon_washerwoman.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/85/Icon_washerwoman.png"
         },
         {
             "name": "Barber",
             "description": "If you died today or tonight, the Demon may choose 2 players (not another Demon) to swap characters.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/16/Icon_barber.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/16/Icon_barber.png"
         },
         {
             "name": "Butler",
             "description": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/19/Icon_butler.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/19/Icon_butler.png"
         },
         {
             "name": "Damsel",
             "description": "All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/dc/Icon_damsel.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/dc/Icon_damsel.png"
         },
         {
             "name": "Drunk",
             "description": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/4a/Icon_drunk.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/4a/Icon_drunk.png"
         },
         {
             "name": "Golem",
             "description": "You may only nominate once per game. When you do, if the nominee is not the Demon, they die.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/2b/Icon_golem.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/2b/Icon_golem.png"
         },
         {
             "name": "Goon",
             "description": "Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6f/Icon_goon.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6f/Icon_goon.png"
         },
         {
             "name": "Hatter",
             "description": "If you died today or tonight, the Minion & Demon players may choose new Minion & Demon characters to be.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/44/Icon_hatter.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/44/Icon_hatter.png"
         },
         {
             "name": "Heretic",
             "description": "Whoever wins, loses & whoever loses, wins, even if you are dead.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/4a/Icon_heretic.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/4a/Icon_heretic.png"
         },
         {
             "name": "Klutz",
             "description": "When you learn that you died, publicly choose 1 alive player: if they are evil, your team loses.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/bc/Icon_klutz.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/bc/Icon_klutz.png"
         },
         {
             "name": "Lunatic",
             "description": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/64/Icon_lunatic.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/64/Icon_lunatic.png"
         },
         {
             "name": "Moonchild",
             "description": "When you learn that you died, publicly choose 1 alive player. Tonight, if it was a good player, they die.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/dc/Icon_moonchild.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/dc/Icon_moonchild.png"
         },
         {
             "name": "Mutant",
             "description": "If you are \"mad\" about being an Outsider, you might be executed.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/2e/Icon_mutant.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/2e/Icon_mutant.png"
         },
         {
             "name": "Ogre",
             "description": "On your 1st night, choose a player (not yourself): you become their alignment (you don't know which) even if drunk or poisoned.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/25/Icon_ogre.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/25/Icon_ogre.png"
         },
         {
             "name": "Plague Doctor",
             "description": "When you die, the Storyteller gains a Minion ability.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e2/Icon_plaguedoctor.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e2/Icon_plaguedoctor.png"
         },
         {
             "name": "Politician",
             "description": "If you were the player most responsible for your team losing, you change alignment & win, even if dead.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a3/Icon_politician.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a3/Icon_politician.png"
         },
         {
             "name": "Puzzlemaster",
             "description": "1 player is drunk, even if you die. If you guess (once) who it is, learn the Demon player, but guess wrong & get false info.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/7a/Icon_puzzlemaster.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/7a/Icon_puzzlemaster.png"
         },
         {
             "name": "Recluse",
             "description": "You might register as evil & as a Minion or Demon, even if dead.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/60/Icon_recluse.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/60/Icon_recluse.png"
         },
         {
             "name": "Saint",
             "description": "If you die by execution, your team loses.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c9/Icon_saint.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c9/Icon_saint.png"
         },
         {
             "name": "Snitch",
             "description": "Each Minion gets 3 bluffs.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c1/Icon_snitch.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c1/Icon_snitch.png"
         },
         {
             "name": "Sweetheart",
             "description": "When you die, 1 player is drunk from now on.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6a/Icon_sweetheart.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6a/Icon_sweetheart.png"
         },
         {
             "name": "Tinker",
             "description": "You might die at any time.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/98/Icon_tinker.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/98/Icon_tinker.png"
         },
         {
             "name": "Zealot",
             "description": "If there are 5 or more players alive, you must vote for every nomination.",
             "type": "OUTSIDER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/16/Icon_zealot.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/16/Icon_zealot.png"
         },
         {
             "name": "Assassin",
             "description": "Once per game, at night*, choose a player: they die, even if for some reason they could not.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/49/Icon_assassin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/49/Icon_assassin.png"
         },
         {
             "name": "Baron",
             "description": "There are extra Outsiders in play. [+2 Outsiders]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6d/Icon_baron.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6d/Icon_baron.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -628,49 +628,49 @@
             "name": "Boffin",
             "description": "The Demon (even if drunk or poisoned) has a not-in-play good character's ability. You both know which.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e0/Icon_boffin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e0/Icon_boffin.png"
         },
         {
             "name": "Boomdandy",
             "description": "If you are executed, all but 3 players die. After a 10 to 1 countdown, the player with the most players pointing at them, dies.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/20/Icon_boomdandy.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/20/Icon_boomdandy.png"
         },
         {
             "name": "Cerenovus",
             "description": "Each night, choose a player & a good character: they are \"mad\" they are this character tomorrow, or might be executed.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/4/45/Icon_cerenovus.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/4/45/Icon_cerenovus.png"
         },
         {
             "name": "Devil's Advocate",
             "description": "Each night, choose a living player (different to last night): if executed tomorrow, they don't die.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/09/Icon_devilsadvocate.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/09/Icon_devilsadvocate.png"
         },
         {
             "name": "Evil Twin",
             "description": "You & an opposing player know each other. If the good player is executed, evil wins. Good can't win if you both live.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f4/Icon_eviltwin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f4/Icon_eviltwin.png"
         },
         {
             "name": "Fearmonger",
             "description": "Each night, choose a player: if you nominate & execute them, their team loses. All players know if you choose a new player.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/11/Icon_fearmonger.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/11/Icon_fearmonger.png"
         },
         {
             "name": "Goblin",
             "description": "If you publicly claim to be the Goblin when nominated & are executed that day, your team wins.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e2/Icon_goblin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e2/Icon_goblin.png"
         },
         {
             "name": "Godfather",
             "description": "You start knowing which Outsiders are in play. If 1 died today, choose a player tonight: they die. [-1 or +1 Outsider]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d0/Icon_godfather.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d0/Icon_godfather.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -687,13 +687,13 @@
             "name": "Harpy",
             "description": "Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or one or both might die.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d3/Icon_harpy.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d3/Icon_harpy.png"
         },
         {
             "name": "Marionette",
             "description": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cf/Icon_marionette.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/cf/Icon_marionette.png",
             "conditions": [
                 {
                     "extra_characters": [
@@ -707,55 +707,55 @@
             "name": "Mastermind",
             "description": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d5/Icon_mastermind.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d5/Icon_mastermind.png"
         },
         {
             "name": "Mezepheles",
             "description": "You start knowing a secret word. The 1st good player to say this word becomes evil that night.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f2/Icon_mezepheles.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f2/Icon_mezepheles.png"
         },
         {
             "name": "Organ Grinder",
             "description": "All players keep their eyes closed when voting and the vote tally is secret. Each night, choose if you are drunk until dusk.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/61/Icon_organgrinder.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/61/Icon_organgrinder.png"
         },
         {
             "name": "Pit-Hag",
             "description": "Each night*, choose a player & a character they become (if not in play). If a Demon is made, deaths tonight are arbitrary.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6b/Icon_pithag.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6b/Icon_pithag.png"
         },
         {
             "name": "Poisoner",
             "description": "Each night, choose a player: they are poisoned tonight and tomorrow day.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b1/Icon_poisoner.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b1/Icon_poisoner.png"
         },
         {
             "name": "Psychopath",
             "description": "Each day, before nominations, you may publicly choose a player: they die. If executed, you only die if you lose roshambo.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a3/Icon_psychopath.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a3/Icon_psychopath.png"
         },
         {
             "name": "Scarlet Woman",
             "description": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don't count)",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/13/Icon_scarletwoman.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/13/Icon_scarletwoman.png"
         },
         {
             "name": "Spy",
             "description": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/54/Icon_spy.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/54/Icon_spy.png"
         },
         {
             "name": "Summoner",
             "description": "You get 3 bluffs. On the 3rd night, choose a player: they become an evil Demon of your choice. [No Demon]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/1a/Icon_summoner.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/1a/Icon_summoner.png",
             "conditions": [
                 {
                     "type": "DEMON",
@@ -767,31 +767,31 @@
             "name": "Vizier",
             "description": "All players know you are the Vizier. You cannot die during the day. If good voted, you may choose to execute immediately.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a4/Icon_vizier.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a4/Icon_vizier.png"
         },
         {
             "name": "Widow",
             "description": "On your first night, look at the Grimoire & choose a player: they are poisoned. 1 good player knows a Widow is in play.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/99/Icon_widow.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/99/Icon_widow.png"
         },
         {
             "name": "Witch",
             "description": "Each night, choose a player: if they nominate tomorrow, they die. If just 3 players live, you lose this ability.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/7b/Icon_witch.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/7b/Icon_witch.png"
         },
         {
             "name": "Wizard",
             "description": "Once per game, choose to make a wish. If granted, it might have a price & leave a clue as to its nature.",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b5/Icon_wizard.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b5/Icon_wizard.png"
         },
         {
             "name": "Xaan",
             "description": "On night X, all Townsfolk are poisoned until dusk. [X Outsiders]",
             "type": "MINION",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/0c/Icon_xaan.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/0c/Icon_xaan.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -803,13 +803,13 @@
             "name": "Al-Hadikhia",
             "description": "Each night*, you may choose 3 players (all players learn who): each silently chooses to live or die, but if all live, all die.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/18/Icon_alhadikhia.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/18/Icon_alhadikhia.png"
         },
         {
             "name": "Fang Gu",
             "description": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/0e/Icon_fanggu.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/0e/Icon_fanggu.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -825,13 +825,13 @@
             "name": "Imp",
             "description": "Each nicht*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/5c/Icon_imp.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/5c/Icon_imp.png"
         },
         {
             "name": "Kazali",
             "description": "Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/3/3c/Icon_kazali.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/3/3c/Icon_kazali.png",
             "conditions": [
                 {
                     "type": "MINION",
@@ -847,19 +847,19 @@
             "name": "Legion",
             "description": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cb/Icon_legion.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/cb/Icon_legion.png"
         },
         {
             "name": "Leviathan",
             "description": "If more than 1 good player is executed, evil wins. All players know you are in play. After day 5, evil wins.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a7/Icon_leviathan.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a7/Icon_leviathan.png"
         },
         {
             "name": "Lil' Monsta",
             "description": "Each night, Minions choose who babysits Lil' Monsta & 'is the Demon'. Each night*, a player might die. [+1 Minion]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/c3/Icon_lilmonsta.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/c3/Icon_lilmonsta.png",
             "conditions": [
                 {
                     "type": "MINION",
@@ -878,13 +878,13 @@
             "name": "Lleech",
             "description": "Each night*, choose a player: they die. You start by choosing a player: they are poisoned. You die if & only if they are dead.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/70/Icon_lleech.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/70/Icon_lleech.png"
         },
         {
             "name": "Lord of Typhon",
             "description": "Each night*, choose a player: they die. [Evil characters are in a line. You are in the middle. +1 Minion. -? to +? Outsiders]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/cf/Icon_lordoftyphon.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/cf/Icon_lordoftyphon.png",
             "conditions": [
                 {
                     "type": "MINION",
@@ -910,43 +910,43 @@
             "name": "No Dashii",
             "description": "Each night*, choose a player: they die. Your 2 Townsfolk neighbors are poisoned.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/eb/Icon_nodashii.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/eb/Icon_nodashii.png"
         },
         {
             "name": "Ojo",
             "description": "Each night*, choose a character: they die. If they are not in play, the Storyteller chooses who dies.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6f/Icon_ojo.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6f/Icon_ojo.png"
         },
         {
             "name": "Po",
             "description": "Each night*, you may choose a player: they die. If your last choice was no-one, choose 3 players tonight.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b2/Icon_po.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b2/Icon_po.png"
         },
         {
             "name": "Pukka",
             "description": "Each night, choose a player: they are poisoned. The previously poisoned player dies then becomes healthy.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/f/f4/Icon_pukka.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/f/f4/Icon_pukka.png"
         },
         {
             "name": "Riot",
             "description": "On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/2d/Icon_riot.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/2d/Icon_riot.png"
         },
         {
             "name": "Shabaloth",
             "description": "Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/1f/Icon_shabaloth.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/1f/Icon_shabaloth.png"
         },
         {
             "name": "Vigormortis",
             "description": "Each night*, choose a player: they die. Minions you kill keep their ability & poison 1 Townsfolk neighbor. [-1 Outsider]",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/1a/Icon_vigormortis.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/1a/Icon_vigormortis.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -962,199 +962,199 @@
             "name": "Vortox",
             "description": "Each night*, choose a player: they die. Townsfolk abilities yield false info. Each day, if no-one is executed, evil wins.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/89/Icon_vortox.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/89/Icon_vortox.png"
         },
         {
             "name": "Yaggababble",
             "description": "You start knowing a secret phrase. For each time you said it publicly today, a player might die.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/08/Icon_yaggababble.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/08/Icon_yaggababble.png"
         },
         {
             "name": "Zombuul",
             "description": "Each night*, if no-one died today, choose a player: they die. The 1st time you die, you live but register as dead.",
             "type": "DEMON",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/15/Icon_zombuul.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/15/Icon_zombuul.png"
         },
         {
             "name": "Apprentice",
             "description": "On your 1st night, you gain a Townsfolk ability (if good) or a Minion ability (if evil).",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/03/Icon_apprentice.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/03/Icon_apprentice.png"
         },
         {
             "name": "Barista",
             "description": "Each night, until dusk, 1) a player becomes sober, healthy & gets true info, or 2) their ability works twice. They learn which.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/24/Icon_barista.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/24/Icon_barista.png"
         },
         {
             "name": "Beggar",
             "description": "You must use a vote token to vote. If a dead player gives you theirs, you learn their alignment. You are sober and healthy.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e3/Icon_beggar.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e3/Icon_beggar.png"
         },
         {
             "name": "Bishop",
             "description": "Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/71/Icon_bishop.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/71/Icon_bishop.png"
         },
         {
             "name": "Bone Collector",
             "description": "Once per game, at night*, choose a dead player: they regain their ability until dusk.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/9e/Icon_bonecollector.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/9e/Icon_bonecollector.png"
         },
         {
             "name": "Bureaucrat",
             "description": "Each night, choose a player (not yourself): their vote counts as 3 votes tomorrow.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/b/b1/Icon_bureaucrat.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/b/b1/Icon_bureaucrat.png"
         },
         {
             "name": "Butcher",
             "description": "Each day, after the 1st execution, you may nominate again.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e3/Icon_butcher.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e3/Icon_butcher.png"
         },
         {
             "name": "Deviant",
             "description": "If you were funny today, you cannot die by exile.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a5/Icon_deviant.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a5/Icon_deviant.png"
         },
         {
             "name": "Gangster",
             "description": "Once per day, you may choose to kill an alive neighbor, if your other alive neighbor agrees.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/a/a5/Icon_gangster.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/a/a5/Icon_gangster.png"
         },
         {
             "name": "Gnome",
             "description": "All players start knowing a player of your alignment. You may choose to kill anyone who nominates them.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e0/Icon_gnome.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e0/Icon_gnome.png"
         },
         {
             "name": "Gunslinger",
             "description": "Each day, after the 1st vote has been tallied, you may choose a player that voted: they die.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/1/1c/Icon_gunslinger.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/1/1c/Icon_gunslinger.png"
         },
         {
             "name": "Harlot",
             "description": "Each night*, choose a living player: if they agree, you learn their character, but you both might die.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/60/Icon_harlot.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/60/Icon_harlot.png"
         },
         {
             "name": "Judge",
             "description": "Once per game, if another player nominated, you may choose to force the current execution to pass or fail.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/59/Icon_judge.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/59/Icon_judge.png"
         },
         {
             "name": "Matron",
             "description": "Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/21/Icon_matron.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/21/Icon_matron.png"
         },
         {
             "name": "Scapegoat",
             "description": "If a player of your alignment is executed, you might be executed instead.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/3/3a/Icon_scapegoat.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/3/3a/Icon_scapegoat.png"
         },
         {
             "name": "Thief",
             "description": "Each night, choose a player (not yourself): their vote counts negatively tomorrow.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/7/77/Icon_thief.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/7/77/Icon_thief.png"
         },
         {
             "name": "Voudon",
             "description": "Only you & the dead can vote. They don't need a vote token to do so. A 50% majority isn't required.",
             "type": "TRAVELLER",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/6d/Icon_voudon.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/6d/Icon_voudon.png"
         },
         {
             "name": "Angel",
             "description": "Something bad might happen to whoever is most responsible for the death of a new player.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/c/ca/Icon_angel.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/c/ca/Icon_angel.png"
         },
         {
             "name": "Bootlegger",
             "description": "This script has homebrew characters or rules.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/08/Icon_bootlegger.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/08/Icon_bootlegger.png"
         },
         {
             "name": "Buddhist",
             "description": "For the first 2 minutes of each day, veteran players may not talk.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/25/Icon_buddhist.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/25/Icon_buddhist.png"
         },
         {
             "name": "Djinn",
             "description": "Use the Djinn's special rule. All players know what it is.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/86/Icon_djinn.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/86/Icon_djinn.png"
         },
         {
             "name": "Doomsayer",
             "description": "If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/8f/Icon_doomsayer.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/8f/Icon_doomsayer.png"
         },
         {
             "name": "Duchess",
             "description": "Each day, 3 players may choose to visit you. At night*, each visitor learns how many visitors are evil, but 1 gets false info.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/87/Icon_duchess.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/87/Icon_duchess.png"
         },
         {
             "name": "Ferryman",
             "description": "On the final day, all dead players regain their vote token.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/8/8f/Icon_ferryman.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/8/8f/Icon_ferryman.png"
         },
         {
             "name": "Fibbin",
             "description": "Once per game, 1 good player might get incorrect information.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/2e/Icon_fibbin.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/2e/Icon_fibbin.png"
         },
         {
             "name": "Fiddler",
             "description": "Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/e/e5/Icon_fiddler.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/e/e5/Icon_fiddler.png"
         },
         {
             "name": "Gardener",
             "description": "The Storyteller assigns 1 or more players' characters.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/5/5c/Icon_gardener.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/5/5c/Icon_gardener.png"
         },
         {
             "name": "Hell's Librarian",
             "description": "Something bad might happen to whoever talks when the Storyteller has asked for silence.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/6/65/Icon_hellslibrarian.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/6/65/Icon_hellslibrarian.png"
         },
         {
             "name": "Revolutionary",
             "description": "2 neighboring players are known to be the same alignment. Once per game, 1 of them registers falsely.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/94/Icon_revolutionary.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/94/Icon_revolutionary.png"
         },
         {
             "name": "Sentinel",
             "description": "There might be 1 extra or 1 fewer Outsider in play.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/d/d4/Icon_sentinel.png",
+            "icon": "https://wiki.bloodontheclocktower.com/images/d/d4/Icon_sentinel.png",
             "conditions": [
                 {
                     "type": "OUTSIDER",
@@ -1172,19 +1172,19 @@
             "name": "Spirit of Ivory",
             "description": "There can't be more than 1 extra evil player.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/9/96/Icon_spiritofivory.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/9/96/Icon_spiritofivory.png"
         },
         {
             "name": "Storm Catcher",
             "description": "Name a good character. If in play, they can only die by execution, but evil players learn which player it is.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/0/08/Icon_stormcatcher.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/0/08/Icon_stormcatcher.png"
         },
         {
             "name": "Toymaker",
             "description": "The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info.",
             "type": "FABLED",
-            "icon": "https://wiki.bloodontheclocktower.com//images/2/27/Icon_toymaker.png"
+            "icon": "https://wiki.bloodontheclocktower.com/images/2/27/Icon_toymaker.png"
         }
     ],
     "scripts": [
