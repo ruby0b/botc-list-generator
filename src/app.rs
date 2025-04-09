@@ -39,7 +39,7 @@ impl Component for App {
     fn create(_ctx: &Context<Self>) -> Self {
         let included_data = serde_json::from_str(include_str!("data.json")).unwrap();
         let user_data = LocalStorage::get(crate::consts::STORAGE_KEY).unwrap_or_default();
-        let state = State {
+        let mut state = State {
             script: crate::consts::DEFAULT_SCRIPT.to_string(),
             selected: BTreeMap::new(),
             player_count: 10,
@@ -52,6 +52,7 @@ impl Component for App {
             expanded_script_menu: false,
             script_input: String::new(),
         };
+        state.randomize_unlocked();
         Self { state }
     }
 
