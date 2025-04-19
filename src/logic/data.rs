@@ -38,6 +38,8 @@ pub fn import_script(json: &str) -> Result<Script, serde_json::Error> {
         .iter()
         .filter_map(|v| v.get("id"))
         .filter_map(|id| id.as_str())
+        .filter(|id| !id.is_empty())
+        .filter(|id| !id.starts_with('_'))
         .chain(vec.iter().filter_map(|v| v.as_str()))
         .map(str::to_string)
         .collect();
