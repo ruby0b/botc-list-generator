@@ -22,19 +22,25 @@ pub struct Script {
 
 pub fn import_script(json: &str) -> Result<Script, serde_json::Error> {
     let vec: Vec<serde_json::Value> = serde_json::from_str(json)?;
-    let name = vec
+
+    let objects = vec.iter().filter_map(|v| v.as_object()).collect::<Vec<_>>();
+
+    let name = objects
         .iter()
-        .filter_map(|v| v.as_object())
-        .next()
+        .find(|v| v.get("id").is_some_and(|id| id.as_str() == Some("_meta")))
         .and_then(|v| v.get("name"))
         .and_then(|v| v.as_str())
         .and_then(|s| (!s.is_empty()).then_some(s))
         .unwrap_or("My Script")
         .to_string();
-    let characters = vec
+
+    let characters = objects
         .iter()
-        .filter_map(|v| v.as_str())
+        .filter_map(|v| v.get("id"))
+        .filter_map(|id| id.as_str())
+        .chain(vec.iter().filter_map(|v| v.as_str()))
         .map(str::to_string)
         .collect();
+
     Ok(Script { name, characters })
 }
