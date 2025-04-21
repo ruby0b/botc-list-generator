@@ -20,6 +20,7 @@ pub struct State {
     pub included_data: IncludedData,
     pub user_data: UserData,
     pub expanded_script_menu: bool,
+    pub script_rename_input: String,
     pub script_input: String,
 }
 

@@ -23,6 +23,8 @@ pub enum Msg {
     SetDemonCount(u8),
     SetScript(String),
     ToggleScriptMenu,
+    UpdateScriptRenameInput(String),
+    RenameScript,
     DeleteScript,
     UpdateScriptInput(String),
     ImportScript,
@@ -50,6 +52,7 @@ impl Component for App {
             included_data,
             user_data,
             expanded_script_menu: false,
+            script_rename_input: String::new(),
             script_input: String::new(),
         };
         state.randomize_unlocked();
@@ -119,6 +122,25 @@ impl Component for App {
                 self.state.expanded_script_menu = !self.state.expanded_script_menu;
                 true
             }
+            Msg::UpdateScriptRenameInput(name) => {
+                self.state.script_rename_input = name;
+                false
+            }
+            Msg::RenameScript => {
+                if let Some(script) = self
+                    .state
+                    .user_data
+                    .scripts
+                    .iter_mut()
+                    .find(|s| s.name == self.state.script)
+                {
+                    script.name = self.state.script_rename_input.clone();
+                    self.state.script = self.state.script_rename_input.clone();
+                }
+                self.state.script_rename_input.clear();
+                self.state.expanded_script_menu = false;
+                true
+            }
             Msg::DeleteScript => {
                 self.state
                     .user_data
@@ -157,7 +179,7 @@ impl Component for App {
                             <button onclick={ctx.link().callback(|_| Msg::ToggleScriptMenu)}>{"⚙️"}</button>
                         </div>
                     </div>
-                    {if self.state.expanded_script_menu {self.view_script_menu(ctx.link())} else {html! {}}}
+                    {self.view_script_menu(ctx.link())}
                     <div class="box">
                         <div class="row">
                             <label>{"Player Count: "}</label>
@@ -327,23 +349,16 @@ impl App {
     }
 
     fn view_script_menu(&self, link: &Scope<Self>) -> Html {
+        if !self.state.expanded_script_menu {
+            return html! {};
+        }
         let update_script_input =
             link.callback(|e: InputEvent| Msg::UpdateScriptInput(get_text(e.target().unwrap())));
-        let is_user_script = self
-            .state
-            .user_data
-            .scripts
-            .iter()
-            .any(|s| s.name == self.state.script);
-        html! {
+        html! {<>
+            {self.view_user_script_menu(link)}
             <div class="box">
                 <div class="row">
                     <div>
-                        {if is_user_script {
-                            html!{<button onclick={link.callback(|_| Msg::DeleteScript)}>{"Delete Current Script"}</button>}
-                        } else {
-                            html!{}
-                        }}
                         <p>
                             {"Use the "}
                             <a href="https://script.bloodontheclocktower.com/" target="_blank">{"BotC Script Builder"}</a>
@@ -356,6 +371,39 @@ impl App {
                         />
                         <button onclick={link.callback(|_| Msg::ImportScript)}>{"Import"}</button>
                     </div>
+                </div>
+            </div>
+        </>}
+    }
+
+    fn view_user_script_menu(&self, link: &Scope<Self>) -> Html {
+        // check if the current script is a custom user script
+        if !self
+            .state
+            .user_data
+            .scripts
+            .iter()
+            .any(|s| s.name == self.state.script)
+        {
+            return html! {};
+        }
+
+        let update_script_rename_input = link
+            .callback(|e: InputEvent| Msg::UpdateScriptRenameInput(get_text(e.target().unwrap())));
+        html! {
+            <div class="box">
+                <div class="row">
+                    <div>
+                        <input type="text"
+                            placeholder="Rename current script..."
+                            oninput={update_script_rename_input}
+                            value={self.state.script_rename_input.clone()}
+                        />
+                        <button onclick={link.callback(|_| Msg::RenameScript)}>{"Rename"}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <button onclick={link.callback(|_| Msg::DeleteScript)}>{"Delete Current Script"}</button>
                 </div>
             </div>
         }
